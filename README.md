@@ -1,3 +1,4 @@
+[![PyPI version](https://badge.fury.io/py/genetic-prompt-compiler.svg)](https://badge.fury.io/py/genetic-prompt-compiler)
 # Genetic Prompt Compiler
 
 Optimize a prompt for a language model using a genetic algorithm.
@@ -12,6 +13,12 @@ rules = [
     "Rule 1",
     "Rule 2",
     "Rule 3",
+]
+
+test_data [
+    ("Question 1", "Answer 1"),
+    ("Question 2", "Answer 2"),
+    ("Question 3", "Answer 3"),
 ]
 
 args = GeneticCompilerArgs(
