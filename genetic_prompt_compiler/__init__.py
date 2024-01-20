@@ -20,17 +20,18 @@ class GeneticCompilerArgs:
     fitness_model_args: dict[str, Any]
     student_model_args: dict[str, Any]
     mutation_model_args: dict[str, Any]
+    rating_notation: int
 
 
 FITNESS_PROMPT = """
-Rate the quality of the generated answer, given a sentence, on a scale from 1 to 10, 1 being the worst and 10 being the best.
-The answer should respect the following rules, each one being worth 1 point:
+Rate the quality of the generated answer, given a sentence, on a scale from 1 to {x}, 1 being the worst and {x} being the best.
+The answer should respect the following rules:
 {rules}
 
 The answer is:
 `{answer}`
 
-Your rating / 10:
+Your rating / {x}:
 """
 
 MUTATE_PROMPT = """
@@ -67,7 +68,7 @@ def fitness(args: GeneticCompilerArgs, answer: str):
     messages = [
         {
             "role": "user",
-            "content": FITNESS_PROMPT.format(rules=rules, answer=answer),
+            "content": FITNESS_PROMPT.format(rules=rules, answer=answer, x=args.rating_notation),
         },
     ]
 

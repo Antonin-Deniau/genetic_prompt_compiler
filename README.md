@@ -15,6 +15,8 @@ rules = [
 ]
 
 args = GeneticCompilerArgs(
+    # The rating notation to use (X/10, X/5 etc.)
+    rating_notation=10,
     # Amount of examples to test on prompts in each generation
     example_amount=3,
     # Top n prompts to keep in each generation
