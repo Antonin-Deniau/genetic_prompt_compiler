@@ -68,7 +68,9 @@ def fitness(args: GeneticCompilerArgs, answer: str):
     messages = [
         {
             "role": "user",
-            "content": FITNESS_PROMPT.format(rules=rules, answer=answer, x=args.rating_notation),
+            "content": FITNESS_PROMPT.format(
+                rules=rules, answer=answer, x=args.rating_notation
+            ),
         },
     ]
 
@@ -95,9 +97,8 @@ def mutate(args: GeneticCompilerArgs, population: list[str]):
     ]
 
     res = completion(
-        model="gpt-4",
         messages=messages,
-        temperature=0.3,
+        **args.mutation_model_args,
     )
 
     return res.choices[0].message.content
