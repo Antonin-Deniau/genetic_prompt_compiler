@@ -32,18 +32,18 @@ args = GeneticCompilerArgs(
     log_level="INFO",
     # Test data to test the prompts on (Currently only the answers are used)
     train_data=train_data,
-    # VLLM arguments for the fitness model (This llm will evaluate the prompts)
+    # LiteLLM arguments for the fitness model (This llm will evaluate the prompts)
     fitness_model_args={
         "model": "gpt-4",
         "temperature": 0.1,
     },
-    # VLLM arguments for the student model (This is the llm we want to optimize)
+    # LiteLLM arguments for the student model (This is the llm we want to optimize)
     student_model_args={
         "model": "openai/TheBloke/Mistral-7B-Instruct-v0.2-AWQ",
         "api_base": "http://127.0.0.1:8000/v1",
         "temperature": 0.1,
     },
-    # VLLM arguments for the mutation model (This llm will mutate the prompts)
+    # LiteLLM arguments for the mutation model (This llm will mutate the prompts)
     mutation_model_args={
         "model": "gpt-4",
         "temperature": 0.3,
