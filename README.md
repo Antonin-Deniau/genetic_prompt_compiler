@@ -16,6 +16,9 @@ You can find complete examples in the [examples](examples) folder.
 ```python
 import genetic_prompt_compiler
 from genetic_prompt_compiler import GeneticCompilerArgs
+from genetic_prompt_compiler.mutate import rule_based_mutate, RuleBasedMutateConfig
+from genetic_prompt_compiler.ranking import top_n_ranking, TopNRankingConfig
+from genetic_prompt_compiler.fitness import rule_based_fitness, RuleBasedFitnessConfig
 
 initial_prompt = "Answer my question about the universe"
 
