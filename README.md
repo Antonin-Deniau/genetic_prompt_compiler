@@ -85,3 +85,4 @@ for population in genetic_prompt_compiler.run(args):
 # Roadmap
 - [ ] Add "Let's think step by step" variation in mutation
 - [ ] Add "You are an expert at" variation in mutation
+- [ ] Add "Examples: " variation in mutation
