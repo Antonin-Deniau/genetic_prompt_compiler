@@ -81,3 +81,7 @@ for population in genetic_prompt_compiler.run(args):
     for prompt in population:
         print(f"\t - {prompt}")
 ```
+
+# Roadmap
+- [ ] Add "Let's think step by step" variation in mutation
+- [ ] Add "You are an expert at" variation in mutation
