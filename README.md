@@ -16,7 +16,7 @@ You can find complete examples in the [examples](examples) folder.
 ```python
 import genetic_prompt_compiler
 from genetic_prompt_compiler import GeneticCompilerArgs
-from genetic_prompt_compiler.mutate import rule_based_mutate, RuleBasedMutateConfig
+from genetic_prompt_compiler.mutate import rule_based_mutate, RuleBasedMutateConfig, Technique
 from genetic_prompt_compiler.ranking import top_n_ranking, TopNRankingConfig
 from genetic_prompt_compiler.fitness import rule_based_fitness, RuleBasedFitnessConfig
 
@@ -32,6 +32,22 @@ test_data [
     "Why is the sky blue?",
     "Who is the president of the United States?",
     "What is the capital of France?",
+]
+
+# The default techniques to use to mutate the prompts
+DEFAULT_TECHNIQUES = [
+    Technique(
+        prompt="Use the expert technique `You are an expert in {topic}`",
+        presence=0.3,
+    ),
+    Technique(
+        prompt="Use the Chain of Thought technique `Let's think step by step...`",
+        presence=0.3,
+    ),
+    Technique(
+        prompt="Use some examples `Here are some examples of answers: {examples}`",
+        presence=0.3,
+    ),
 ]
 
 
@@ -52,6 +68,8 @@ args = GeneticCompilerArgs(
         mutation_llm=lambda q: "",
         # Rules to generate the mutated prompts on
         rules=rules,
+        # This is the default techniques used to mutate the prompts, you can omit this argument
+        techniques=DEFAULT_TECHNIQUES,
     ),
     fitnes_config=RuleBasedFitnessConfig(
         # The llm function to use to rank the prompts
@@ -81,8 +99,3 @@ for population in genetic_prompt_compiler.run(args):
     for prompt in population:
         print(f"\t - {prompt}")
 ```
-
-# Roadmap
-- [ ] Add "Let's think step by step" variation in mutation
-- [ ] Add "You are an expert at" variation in mutation
-- [ ] Add "Examples: " variation in mutation
